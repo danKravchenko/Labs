@@ -1,0 +1,49 @@
+.traffic_lights {
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+}
+
+.traffic-lights-img {
+        position: absolute;
+}
+
+.lights {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+}
+
+.lights img {
+        z-index: 1;
+        position: absolute;
+}
+
+.lights img:nth-child(1) {
+        margin-top: 42px;
+}
+
+.lights img:nth-child(2) {
+        margin-top: 195px;
+}
+
+.lights img:nth-child(3) {
+        margin-top: 347px;
+        animation-name: none;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+}
+
+@keyframes blinking {
+        0% {
+                opacity: 0;
+        }
+
+        50% {
+                opacity: 0;
+        }
+
+        100% {
+                opacity: 1;
+        }
+}
