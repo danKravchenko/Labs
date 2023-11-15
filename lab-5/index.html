@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online shop</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="media.css">
+</head>
+
+<body>
+        <header>
+                <div class="header-container">
+                        <div class="logo">
+                                <img src="Images/Logo.png" alt="logo-img">
+                        </div>
+                        <div class="search-menu">
+                                <button><img src="Images/menu.png"
+                                                style="margin-right: 10px; font-weight:bold">KATALOG</button>
+                                <div class="search-field-wrapper">
+                                        <input type="text" placeholder="Search item...">
+                                        <button>
+                                                <img src="Images/search.png" alt="search">
+                                        </button>
+                                </div>
+                        </div>
+                        <div class="client-panel-menu">
+                                <button>
+                                        <img src="Images/shopping_cart.png" alt="shopping-cart">
+                                </button>
+                                <button>
+                                        <img src="Images/Frame.png" alt="client-account">
+                                </button>
+                        </div>
+                </div>
+        </header>
+
+        <main>
+                <div class="filter-container">
+                        <h2>Каталог</h2>
+                        <ul>
+                                <li>Телефони</li>
+                                <li>Планшети</li>
+                                <li>Телевізори</li>
+                                <li>Ноутбуки</li>
+                        </ul>
+                        <h2>Ціна</h2>
+                        <div class="price-setting-wrapper">
+                                <input type="range">
+                                <input type="text">
+                                <input type="text">
+                                <button>Ок</button>
+                        </div>
+                        <button>Фільтрувати</button>
+                </div>
+                <div id="products-container">
+                        <div class="sort-btn">
+                                <select onchange="new ItemsCards().sortItems()" id="sort-box">
+                                        <option>За рейтенгом</option>
+                                        <option>Від дорогих до дешевих</option>
+                                        <option>Від дешевих до дорогих</option>
+                                </select>
+                        </div>
+                </div>
+        </main>
+
+        <footer>
+                <div class="additional-info">
+                        <div class="left-columns">
+                                <div class="column">
+                                        <ul>
+                                                <li><a href="#">Documents</a></li>
+                                                <li><a href="#">General conditions</a></li>
+                                                <li><a href="#">Offers archive</a></li>
+                                                <li><a href="#">A series</a></li>
+                                                <li><a href="#">Testimony</a></li>
+                                        </ul>
+                                </div>
+                                <div class="column">
+                                        <ul>
+                                                <li><a href="#">Service</a></li>
+                                                <li><a href="#">Shops</a></li>
+                                                <li><a href="#">About Us</a></li>
+                                                <li><a href="#">For cooperation</a></li>
+                                                <li><a href="#">Repetition</a></li>
+                                        </ul>
+                                </div>
+                                <div class="column">
+                                        <ul>
+                                                <li><a href="#">Product catalog</a></li>
+                                                <li><a href="#">Katalog 1</a></li>
+                                                <li><a href="#">Katalog 2</a></li>
+                                                <li><a href="#">Katalog 3</a></li>
+                                                <li><a href="#">Katalog 4</a></li>
+                                        </ul>
+                                </div>
+                        </div>
+
+                        <div class="right-columns">
+                                <div class="column">
+                                        <ul>
+                                                <li><a href="#">Information service</a></li>
+                                                <li><a href="#">contact.@nextstore.uz</a></li>
+                                                <li><a href="#">+998 97 712 96 96</a></li>
+                                                <li><a href="#">+998 95 503 09 09</a></li>
+                                                <li><a href="#">Sagbon 186, Almazor district, Country, Sity</a></li>
+                                        </ul>
+                                </div>
+                        </div>
+                </div>
+                <div class="social">
+                        <span>2023 Nextstore.com</span>
+                </div>
+        </footer>
+</body>
+<script src="Scripts/item.js"></script>
+
+</html>
