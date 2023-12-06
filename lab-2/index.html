@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <title>Moving Image</title>
+        <style>
+                html {
+                        margin: 0;
+                        overflow: hidden;
+                }
+
+                img {
+                        position: absolute;
+                }
+        </style>
+</head>
+
+<body>
+        <img id="movingImg" src="android.png" alt="Зображення">
+        <script>
+                // Отримання зображення
+                const img = document.getElementById('movingImg');
+
+                // Початкові значення координат та швидкості руху
+                let x = 0;
+                let y = 0;
+                let speedX = 2;
+                let speedY = 2;
+
+                // Функція для руху зображення
+                function moveImage() {
+                        // Отримання розмірів вікна перегляду
+                        const windowWidth = window.innerWidth;
+                        const windowHeight = window.innerHeight;
+
+                        // Отримання розмірів зображення
+                        const imgWidth = img.width;
+                        const imgHeight = img.height;
+
+                        // Зміна координат зображення
+                        x += speedX;
+                        y += speedY;
+
+                        // Відбиття від стінок
+                        if (x + imgWidth > windowWidth || x < 0) {
+                                speedX = -speedX;
+                        }
+                        if (y + imgHeight > windowHeight || y < 0) {
+                                speedY = -speedY;
+                        }
+
+                        // Застосування нових координат
+                        img.style.left = x + 'px';
+                        img.style.top = y + 'px';
+
+                        // Запуск циклу руху
+                        requestAnimationFrame(moveImage);
+                }
+
+                // Запуск руху зображення
+                moveImage();
+
+        </script>
+</body>
+
+</html>

@@ -21,14 +21,15 @@
                                                 style="margin-right: 10px; font-weight:bold">KATALOG</button>
                                 <div class="search-field-wrapper">
                                         <input type="text" placeholder="Search item...">
-                                        <button>
+                                        <button onclick="new ItemsCards().showItemsCount()">
                                                 <img src="Images/search.png" alt="search">
                                         </button>
                                 </div>
                         </div>
                         <div class="client-panel-menu">
-                                <button>
+                                <button id="cart" onclick="new Cart().openCart()">
                                         <img src="Images/shopping_cart.png" alt="shopping-cart">
+                                        <div class="cart-item-count"></div>
                                 </button>
                                 <button>
                                         <img src="Images/Frame.png" alt="client-account">
@@ -38,30 +39,123 @@
         </header>
 
         <main>
-                <div class="filter-container">
-                        <h2>Каталог</h2>
-                        <ul>
-                                <li>Телефони</li>
-                                <li>Планшети</li>
-                                <li>Телевізори</li>
-                                <li>Ноутбуки</li>
-                        </ul>
-                        <h2>Ціна</h2>
-                        <div class="price-setting-wrapper">
-                                <input type="range">
-                                <input type="text">
-                                <input type="text">
-                                <button>Ок</button>
+                <div id="cart-container">
+                        <div class="upper-panel">
+                                <h2>Корзина</h2>
+                                <img src="Images/cross.png" alt="close-btn" id="btn-close"
+                                        onclick="new Cart().closeCart()">
                         </div>
-                        <button>Фільтрувати</button>
+
+                        <div class="list-item-cart">
+                                <div id="have-items">
+                                </div>
+                                <div id="no-items">
+                                        <img src="Images/modal-cart-dummy.svg">
+                                        <h2>Корзина пуста</h2>
+                                </div>
+                        </div>
+                        <div id="cart-receipt">
+                                <div class="price-count-cart">
+                                        <p>Разом</p>
+                                        <p id="price-count">100 USD</p>
+                                </div>
+                                <button>Оформити замовлення</button>
+                        </div>
                 </div>
-                <div id="products-container">
-                        <div class="sort-btn">
-                                <select onchange="new ItemsCards().sortItems()" id="sort-box">
-                                        <option>За рейтенгом</option>
-                                        <option>Від дорогих до дешевих</option>
-                                        <option>Від дешевих до дорогих</option>
-                                </select>
+                <div id="shadow-bg"></div>
+
+                <div class="grid-container">
+                        <div class="filter-container">
+                                <h2>Каталог</h2>
+                                <div id="catalog">
+                                        <input type="checkbox" value="phone" id="1">
+                                        <label for="1">Телефони</label><br>
+
+                                        <input type="checkbox" value="tablets" id="2">
+                                        <label for="2">Планшети</label><br>
+
+                                        <input type="checkbox" value="tv" id="3">
+                                        <label for="3">Телевізори</label><br>
+
+                                        <input type="checkbox" value="laptop" id="4">
+                                        <label for="4">Ноутбуки</label><br>
+                                </div>
+
+                                <h2>Ціна</h2>
+                                <div class="price-setting-wrapper">
+                                        <div class="input-settings-price">
+                                                <input type="text">
+                                                <input type="text">
+                                        </div>
+                                        <input type="range">
+                                </div>
+
+                                <h2>Бренд</h2>
+                                <div id="brands">
+                                        <input type="checkbox" value="Asus" id="1">
+                                        <label for="1-value-list">Asus</label><br>
+
+                                        <input type="checkbox" value="Lenovo" id="2">
+                                        <label for="2-value-list">Lenovo</label><br>
+
+                                        <input type="checkbox" value="Acer" id="3">
+                                        <label for="3-value-list">Acer</label><br>
+
+                                        <input type="checkbox" value="Apple" id="4">
+                                        <label for="4-value-list">Apple</label><br>
+
+                                        <input type="checkbox" value="Samsung" id="5">
+                                        <label for="5-value-list">Samsung</label><br>
+                                </div>
+
+                                <h2>Екран</h2>
+                                <div class="screen-size">
+                                        <input type="checkbox" value="Asus" id="1-value-list">
+                                        <label for="1-value-list">Asus</label><br>
+
+                                        <input type="checkbox" value="Lenovo" id="2-value-list">
+                                        <label for="2-value-list">Lenovo</label><br>
+
+                                        <input type="checkbox" value="Acer" id="3-value-list">
+                                        <label for="3-value-list">Acer</label><br>
+
+                                        <input type="checkbox" value="Apple" id="4-value-list">
+                                        <label for="4-value-list">Apple</label><br>
+
+                                        <input type="checkbox" value="Samsung" id="5-value-list">
+                                        <label for="5-value-list">Samsung</label><br>
+                                </div>
+
+                                <h2>Оперативна пам`ять</h2>
+                                <div class="memeory-size">
+                                        <input type="checkbox" value="Asus" id="1-value-list">
+                                        <label for="1-value-list">Asus</label><br>
+
+                                        <input type="checkbox" value="Lenovo" id="2-value-list">
+                                        <label for="2-value-list">Lenovo</label><br>
+
+                                        <input type="checkbox" value="Acer" id="3-value-list">
+                                        <label for="3-value-list">Acer</label><br>
+
+                                        <input type="checkbox" value="Apple" id="4-value-list">
+                                        <label for="4-value-list">Apple</label><br>
+
+                                        <input type="checkbox" value="Samsung" id="5-value-list">
+                                        <label for="5-value-list">Samsung</label><br>
+                                </div>
+
+                                <div class="btn-filtering-wrapper">
+                                        <button class="btn-filtering" onclick="new ItemsCards().filterItems()">Фільтрувати</button>
+                                </div>
+                        </div>
+                        <div id="products-container">
+                                <div class="sort-btn">
+                                        <select onchange="new ItemsCards().sortItems()" id="sort-box">
+                                                <option>За рейтингом</option>
+                                                <option>Від дорогих до дешевих</option>
+                                                <option>Від дешевих до дорогих</option>
+                                        </select>
+                                </div>
                         </div>
                 </div>
         </main>
