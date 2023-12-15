@@ -7,10 +7,33 @@
         }
 }
 
+@media (max-width: 1330px) {
+        .btn-buy-current-items {
+                margin: 20px;
+        }
+}
+
+@media (max-width: 1350px) {
+        #current-product-btns {
+                height: 90px;
+        }
+
+        .btn-buy-current-items {
+                margin: 5px;
+        }
+}
 
 @media (max-width: 1280px) {
         .grid-container {
                 grid-template-columns: 400px 730px;
+        }
+
+        #current-product-btns {
+                height: 90px;
+        }
+
+        .btn-buy-current-items {
+                margin: 5px;
         }
 }
 
@@ -21,5 +44,92 @@
 
         #products-container {
                 justify-content: center;
+        }
+
+        .sort-btn select {
+                width: 340px;
+        }
+
+        #current-product-btns {
+                height: inherit;
+        }
+}
+
+@media (max-width: 1150px) {
+        #items-container {
+                padding: 50px;
+                flex-direction: column;
+        }
+
+        #items-container {
+                height: inherit;
+        }
+
+        #items-container .left-column {
+                width: inherit;
+        }
+
+        #items-container .right-column {
+                margin-top: 100px;
+                width: inherit;
+                height: inherit;
+        }
+}
+
+@media (max-width: 960px) {
+        .additional-info {
+                justify-content: center;
+        }
+
+        footer {
+                height: inherit;
+        }
+}
+
+@media (max-width: 800px) {
+        .grid-container {
+                grid-template-columns: 0 340px;
+        }
+
+        #filter-container {
+                grid-column-end: 3;
+        }
+
+        #products-container {
+                grid-row-start: 4;
+                margin-left: 0;
+        }
+
+        .client-panel-menu {
+                margin-top: 20px;
+        }
+
+        .header-container {
+                height: inherit;
+                padding: 20px 10px;
+        }
+}
+
+@media (max-width: 675px) {
+        .search-menu {
+                width: 400px;
+        }
+
+        #burger-menu {
+                display: flex;
+        }
+
+        .search-menu button:first-child {
+                display: none;
+        }
+}
+
+@media (max-width: 575px) {
+        .left-columns {
+                justify-content: center;
+        }
+
+        #imgs-carrousel img{
+                padding: 0;
         }
 }

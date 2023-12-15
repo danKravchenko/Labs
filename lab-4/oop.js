@@ -7,8 +7,10 @@ class TrafficLights {
         #greenLight = null;
         #blinkingState = false;
 
-        constructor(timeSwitching, timeBlinking, id) {
-                this.timeSwitching = timeSwitching;
+        constructor(timeSwitchingRedLight, timeSwitchingYellowLight, timeSwitchingGreenLight, timeBlinking, id) {
+                this.timeSwitchingRedLight = timeSwitchingRedLight;
+                this.timeSwitchingYellowLight = timeSwitchingYellowLight;
+                this.timeSwitchingGreenLight = timeSwitchingGreenLight;
                 this.timeBlinking = timeBlinking;
                 this.id = id;
         }
@@ -24,7 +26,11 @@ class TrafficLights {
                 this.yellowLight.style.display = "none";
                 this.greenLight.style.display = "none";
                 this.steps = 0;
-                this.intervalID = setInterval(() => this.#switching(), this.timeSwitching);
+                this.#timerSwitching(this.timeSwitchingRedLight);
+        }
+
+        #timerSwitching(timeSwitching) {
+                this.intervalID = setTimeout(() => this.#switching(), timeSwitching);
         }
 
         #switching() {
@@ -37,11 +43,13 @@ class TrafficLights {
                 switch (this.steps) {
                         case 1:
                                 this.yellowLight.style.display = "inherit";
+                                this.#timerSwitching(this.timeSwitchingYellowLight);
                                 break;
                         case 2:
                                 this.redLight.style.display = "none";
                                 this.yellowLight.style.display = "none";
                                 this.greenLight.style.display = "inherit";
+                                this.#timerSwitching(this.timeSwitchingGreenLight);
                                 break;
                         case 3:
                                 this.#blinking(true);
@@ -53,10 +61,10 @@ class TrafficLights {
                                 this.greenLight.style.display = "none";
                                 break;
                         case 5:
-                                clearInterval(this.intervalID);
+                                clearTimeout(this.intervalID);
                                 this.startWorking();
                                 break;
-                }  
+                }
         }
 
         #blinking(active) {
@@ -65,16 +73,18 @@ class TrafficLights {
                         this.blinkingState = true;
                         setTimeout(() => {
                                 this.blinkingState = false;
+                                this.#timerSwitching(this.timeSwitchingYellowLight);
                         }, this.timeBlinking)
                 }
 
                 else {
                         this.greenLight.style.animationName = "none";
+                        this.#timerSwitching(this.timeSwitchingYellowLight);
                 }
         }
 }
 
-let TrafficLights_1 = new TrafficLights(5000, 5000, 1); ///  timeSwitching, timeBlinking, id
+let TrafficLights_1 = new TrafficLights(2000, 1000, 4000, 1000, 1); 
 TrafficLights_1.startWorking();
 
 

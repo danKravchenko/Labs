@@ -19,9 +19,11 @@
                         <div class="search-menu">
                                 <button><img src="Images/menu.png"
                                                 style="margin-right: 10px; font-weight:bold">KATALOG</button>
+                                <button id="burger-menu"><img src="Images/menu.png"
+                                                style="margin-right: 10px; font-weight:bold"></button>
                                 <div class="search-field-wrapper">
                                         <input type="text" placeholder="Search item...">
-                                        <button onclick="new ItemsCards().showItemsCount()">
+                                        <button>
                                                 <img src="Images/search.png" alt="search">
                                         </button>
                                 </div>
@@ -62,16 +64,52 @@
                                 <button>Оформити замовлення</button>
                         </div>
                 </div>
+                <div id="items-container" style="padding: 50px;">
+                        <div class="btn-back" onclick="Item.goBack()">
+                                <img src="Images/btn-back.png" alt="back-btn">
+                        </div>
+                        <div class="left-column">
+                                <img src="Images/item-1.1.webp" class="main-image">
+
+                                <div id="imgs-carrousel">
+                                        <img src="" onclick="CarrouselCurrentItem.setImage(0)">
+                                        <img src="" onclick="CarrouselCurrentItem.setImage(1)">
+                                        <img src="" onclick="CarrouselCurrentItem.setImage(2)">
+                                </div>
+                        </div>
+
+                        <div class="right-column">
+                                <h3 id="name-of-item">Назва товару</h3>
+                                <h3 style="display: inline;">Ціна:</h3>
+                                <p style="display: inline; font-size: 27px;"></p>
+                                <h3>Рейтинг товару:</h3>
+                                <div id="current-product-rating">
+                                        <img src="Images/star_rating.png" alt="rating">
+                                        <img src="Images/star_rating.png" alt="rating">
+                                        <img src="Images/star_rating.png" alt="rating">
+                                        <img src="Images/star_rating.png" alt="rating">
+                                        <img src="Images/star_rating.png" alt="rating">
+                                </div>
+                                <h3>Характеристика:</h3>
+                                <p id="description-of-item"></p>
+                                <div id="current-product-btns">
+                                        <button class="btn-buy-current-items">Купити</button>
+                                        <button class="btn-buy-current-items">Купити в кредит</button>
+                                        <button class="btn-buy-current-items">В корзину<img src="Images/Frame-2.png"
+                                                        alt="cart"></button>
+                                </div>
+                        </div>
+                </div>
                 <div id="shadow-bg"></div>
 
                 <div class="grid-container">
-                        <div class="filter-container">
+                        <div id="filter-container">
                                 <h2>Каталог</h2>
                                 <div id="catalog">
                                         <input type="checkbox" value="phone" id="1">
                                         <label for="1">Телефони</label><br>
 
-                                        <input type="checkbox" value="tablets" id="2">
+                                        <input type="checkbox" value="tablet" id="2">
                                         <label for="2">Планшети</label><br>
 
                                         <input type="checkbox" value="tv" id="3">
@@ -84,68 +122,56 @@
                                 <h2>Ціна</h2>
                                 <div class="price-setting-wrapper">
                                         <div class="input-settings-price">
-                                                <input type="text">
-                                                <input type="text">
+                                                <b style="margin-right: 10px">Від</b><input type="text" id="min-value">
+                                                <b style="margin: 0 10px;">До</b><input type="text" id="max-value">
                                         </div>
-                                        <input type="range">
                                 </div>
 
-                                <h2>Бренд</h2>
+                                <h2 style="margin-top: 0;">Бренд</h2>
                                 <div id="brands">
                                         <input type="checkbox" value="Asus" id="1">
-                                        <label for="1-value-list">Asus</label><br>
+                                        <label for="1">Asus</label><br>
 
                                         <input type="checkbox" value="Lenovo" id="2">
-                                        <label for="2-value-list">Lenovo</label><br>
+                                        <label for="2">Lenovo</label><br>
 
                                         <input type="checkbox" value="Acer" id="3">
-                                        <label for="3-value-list">Acer</label><br>
+                                        <label for="3">Acer</label><br>
 
                                         <input type="checkbox" value="Apple" id="4">
-                                        <label for="4-value-list">Apple</label><br>
+                                        <label for="4">Apple</label><br>
 
                                         <input type="checkbox" value="Samsung" id="5">
-                                        <label for="5-value-list">Samsung</label><br>
+                                        <label for="5">Samsung</label><br>
                                 </div>
 
                                 <h2>Екран</h2>
-                                <div class="screen-size">
-                                        <input type="checkbox" value="Asus" id="1-value-list">
-                                        <label for="1-value-list">Asus</label><br>
+                                <div id="screen-size">
+                                        <input type="checkbox" value="6-20" id="1">
+                                        <label for="1">6-20"</label><br>
 
-                                        <input type="checkbox" value="Lenovo" id="2-value-list">
-                                        <label for="2-value-list">Lenovo</label><br>
+                                        <input type="checkbox" value="21-30" id="2">
+                                        <label for="2">21-30"</label><br>
 
-                                        <input type="checkbox" value="Acer" id="3-value-list">
-                                        <label for="3-value-list">Acer</label><br>
-
-                                        <input type="checkbox" value="Apple" id="4-value-list">
-                                        <label for="4-value-list">Apple</label><br>
-
-                                        <input type="checkbox" value="Samsung" id="5-value-list">
-                                        <label for="5-value-list">Samsung</label><br>
+                                        <input type="checkbox" value="3 and more" id="3">
+                                        <label for="3">31 і більше"</label><br>
                                 </div>
 
                                 <h2>Оперативна пам`ять</h2>
-                                <div class="memeory-size">
-                                        <input type="checkbox" value="Asus" id="1-value-list">
-                                        <label for="1-value-list">Asus</label><br>
+                                <div id="memory-size">
+                                        <input type="checkbox" value="4" id="1">
+                                        <label for="1">4 Гб</label><br>
 
-                                        <input type="checkbox" value="Lenovo" id="2-value-list">
-                                        <label for="2-value-list">Lenovo</label><br>
+                                        <input type="checkbox" value="6" id="2">
+                                        <label for="2">6 Гб</label><br>
 
-                                        <input type="checkbox" value="Acer" id="3-value-list">
-                                        <label for="3-value-list">Acer</label><br>
-
-                                        <input type="checkbox" value="Apple" id="4-value-list">
-                                        <label for="4-value-list">Apple</label><br>
-
-                                        <input type="checkbox" value="Samsung" id="5-value-list">
-                                        <label for="5-value-list">Samsung</label><br>
+                                        <input type="checkbox" value="8 and more" id="3">
+                                        <label for="3">Більше 8 Гб</label><br>
                                 </div>
 
                                 <div class="btn-filtering-wrapper">
-                                        <button class="btn-filtering" onclick="new ItemsCards().filterItems()">Фільтрувати</button>
+                                        <button class="btn-filtering"
+                                                onclick="new ItemsCards().filterItems()">Фільтрувати</button>
                                 </div>
                         </div>
                         <div id="products-container">
@@ -165,16 +191,15 @@
                         <div class="left-columns">
                                 <div class="column">
                                         <ul>
-                                                <li><a href="#">Documents</a></li>
+                                                <li>Documents</li>
                                                 <li><a href="#">General conditions</a></li>
                                                 <li><a href="#">Offers archive</a></li>
                                                 <li><a href="#">A series</a></li>
-                                                <li><a href="#">Testimony</a></li>
                                         </ul>
                                 </div>
                                 <div class="column">
                                         <ul>
-                                                <li><a href="#">Service</a></li>
+                                                <li>Service</li>
                                                 <li><a href="#">Shops</a></li>
                                                 <li><a href="#">About Us</a></li>
                                                 <li><a href="#">For cooperation</a></li>
@@ -183,11 +208,12 @@
                                 </div>
                                 <div class="column">
                                         <ul>
-                                                <li><a href="#">Product catalog</a></li>
+                                                <li>Product catalog</li>
                                                 <li><a href="#">Katalog 1</a></li>
                                                 <li><a href="#">Katalog 2</a></li>
                                                 <li><a href="#">Katalog 3</a></li>
                                                 <li><a href="#">Katalog 4</a></li>
+                                                <li><a href="#">Katalog 5</a></li>
                                         </ul>
                                 </div>
                         </div>
@@ -195,20 +221,26 @@
                         <div class="right-columns">
                                 <div class="column">
                                         <ul>
-                                                <li><a href="#">Information service</a></li>
+                                                <li>Information service</li>
                                                 <li><a href="#">contact.@nextstore.uz</a></li>
                                                 <li><a href="#">+998 97 712 96 96</a></li>
                                                 <li><a href="#">+998 95 503 09 09</a></li>
                                                 <li><a href="#">Sagbon 186, Almazor district, Country, Sity</a></li>
                                         </ul>
                                 </div>
+                                <div class="column-social">
+                                        <a href="#"><img src="Images/Facebook_icon.png"></a>
+                                        <a href="#"><img src="Images/Instagram_icon.png"></a>
+                                        <a href="#"><img src="Images/Telegram_icon.png"></a>
+                                        <a href="#"><img src="Images/TikTok_icon.png"></a>
+                                </div>
                         </div>
                 </div>
                 <div class="social">
-                        <span>2023 Nextstore.com</span>
+                        <span style="margin-left: 20px;">2023 Nextstore.com</span>
                 </div>
         </footer>
 </body>
-<script src="Scripts/item.js"></script>
+<script src="item.js"></script>
 
 </html>

@@ -1,6 +1,5 @@
+
 let steps = 0;
-let timeSwitching = 0;
-let timeBlinking = 0;
 let trafficLightsElem = null;
 let lightElements = null;
 let redLight = null;
@@ -8,8 +7,11 @@ let yellowLight = null;
 let greenLight = null;
 let blinkingState = false;
 
-function startWorking(timeSwitchingParam, timeBlinkingParam, idParam) {
-        timeSwitching = timeSwitchingParam;
+
+function startWorking(timeSwitchingRedLightParam, timeSwitchingYellowLightParam, timeSwitchingGreenLightParam, timeBlinkingParam, idParam) {
+        timeSwitchingRedLight = timeSwitchingRedLightParam;
+        timeSwitchingYellowLight = timeSwitchingYellowLightParam;
+        timeSwitchingGreenLight = timeSwitchingGreenLightParam;
         timeBlinking = timeBlinkingParam;
         id = idParam;
         trafficLightsElem = document.getElementById(`${id}`);
@@ -17,15 +19,18 @@ function startWorking(timeSwitchingParam, timeBlinkingParam, idParam) {
         redLight = lightElements[0].children[0];
         yellowLight = lightElements[0].children[1];
         greenLight = lightElements[0].children[2];
-
         redLight.style.display = "inherit";
         yellowLight.style.display = "none";
         greenLight.style.display = "none";
         steps = 0;
-        intervalID = setInterval(switching, timeSwitching);
+        timerSwitching(timeSwitchingRedLight);
 }
 
-function switching() {
+function timerSwitching(timeSwitching) {
+        intervalID = setTimeout(() => switching(timeSwitchingRedLight, timeSwitchingYellowLight, timeSwitchingGreenLight, timeBlinking), timeSwitching);
+}
+
+function switching(timeSwitchingRedLight, timeSwitchingYellowLight, timeSwitchingGreenLight, timeBlinking) {
         steps++;
 
         if (blinkingState == true) {
@@ -35,11 +40,13 @@ function switching() {
         switch (steps) {
                 case 1:
                         yellowLight.style.display = "inherit";
+                        timerSwitching(timeSwitchingYellowLight);
                         break;
                 case 2:
                         redLight.style.display = "none";
                         yellowLight.style.display = "none";
                         greenLight.style.display = "inherit";
+                        timerSwitching(timeSwitchingGreenLight);
                         break;
                 case 3:
                         blinking(true);
@@ -51,8 +58,8 @@ function switching() {
                         greenLight.style.display = "none";
                         break;
                 case 5:
-                        clearInterval(intervalID);
-                        startWorking(5000, 10000, 1);
+                        clearTimeout(intervalID);
+                        startWorking(2000, 1000, 4000, 1000, 1);
                         break;
         }
 }
@@ -63,14 +70,17 @@ function blinking(active) {
                 blinkingState = true;
                 setTimeout(() => {
                         blinkingState = false;
+                        timerSwitching(timeSwitchingYellowLight);
                 }, timeBlinking)
         }
 
         else {
                 greenLight.style.animationName = "none";
+                timerSwitching(timeSwitchingYellowLight);
         }
 }
 
-startWorking(5000, 5000, 1); ///  timeSwitching, timeBlinking, id
+startWorking(2000, 1000, 4000, 1000, 1);
+
 
 
